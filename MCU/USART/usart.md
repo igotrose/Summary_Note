@@ -62,8 +62,8 @@ USART：**universal synchronous asynchronous receiver transmitter**， 通用同
 ![alt text](<TC or TXE behavior when transmitting.png>)
 ### 接收器
 #### 起始位检测
-当特定序列被识别时，起始位将会被检测    
-该序列是 **1 1 1 0 X 0 x 0 x 0 0 0 0**
+当特定序列被识别时，起始位将会被检测        
+该序列是 **1 1 1 0 X 0 x 0 x 0 0 0 0**    
 ![alt text](<Start bit detection when oversampling.png>)
 #### 字符接收   
 在USART接收模式下，首先通过**RX**引脚发出最不重要的位。在这个模式下，**USART_DR**寄存器包含了一个内部总线和接收移位寄存器的缓冲区。      
