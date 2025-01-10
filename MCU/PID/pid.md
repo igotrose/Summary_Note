@@ -102,7 +102,7 @@ PID控制其实就是对偏差的控制过程；
     #endif
 
 ## 增量式PID
-![alt text](pid_increment.png)
+![alt text](pid_increment.png)   
 增量型 PID，是对位置型 PID 取增量，这时控制器输出的是相邻两次采样时刻所计算的位置值
 之差，得到的结果是增量，即在上一次的控制量的基础上需要增加（负值意味减少）控制量。
 增量式PID 只需输出限幅
