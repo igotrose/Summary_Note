@@ -98,7 +98,7 @@ hcrtos sdk默认会尝试从 **http://hichip01/dl** 进行下载，该路径是�
   - unity
   - wolfssl
   - zlib
-- configs       // 压缩算法
+- configs       // 压缩算法 
 - dl            
   - cjson
   - dtc
@@ -257,13 +257,16 @@ ddr文件的选择主要有以下四个方面需要注意：
     - HCFOTA_HC16C3100V20_2501140208.bin
     - HCProgrammer.exe
     - sfburn.ini
-  - for-factory/
+  - for-factory
+  //spinorflash.bin是用于生成烧录器用的，即贴片生产用的，是flash上对应的烧录文件，用烧录器进行烧录。
     - spinorflash.bin
-  - for-net-upgrade/
+  - for-net-upgrade
+  //这是用于网络升级的，这里面的hcfota.bin与 "for-upgrade"里面的是一样的。 只是这个文件夹还生成了网络配置文件HCFOTA.jsonp
     - 2501140208/
       - HCFOTA.ota.bin
     - HCFOTA.jsonp
-  - for-upgrade/
+  - for-upgrade
+  //hcfota.bin“不会忽略版本检查”，“不会包含boot分区“。如需升级boot分区，需要手动执行HCFota_Generator.exe，生成对应的HCFOTA.bin
     - HCFOTA_HC16C3100V20_2501140208.ota.bin
     - HCFOTA.ota.bin
   - fs-partition1-root/
@@ -275,7 +278,7 @@ ddr文件的选择主要有以下四个方面需要注意：
   - hc16xx_ddr3_128M_800MHz.abs
   - hc16xx_jtag_updater.bin
   - hcboot.bin
-  - hcboot.out
+  - hcboot.out 
   - hcboot.out.map
   - hcboot.uncompress.bin
   - hcboot.uncompress.out
@@ -292,3 +295,12 @@ ddr文件的选择主要有以下四个方面需要注意：
   - persistentmem.bin
   - romfs.img
   - user_data
+#### 独有配置
+## 烧录
+#### 烧录方法
+|方法|gdb烧录|usb烧录|hcfota升级|串口烧录|hcprogrammer烧录|贴片烧录|
+|----|------|-------|----------|-------|----------------|-------|
+|优点|开发调试方便，便于跟踪代码，查看疑难问题。开发阶段必备。|较gdb更轻量化。有USB口即可实现。|U盘升级，随插随升。|在没有usb口的板子上容易实现。|只用一条usb公对公的线即可完成，目前主推的烧录方式。|通用烧录器进行烧录，适合于大批量生产，使用的文件路径位于：\output\images\for-factory\spinorflash.bin|
+|缺点|需要占用比较多的pin脚，需要硬件设计时预留。|仅二代芯片可用。|仅适用于板子内有程序，且支持hcfota升级，能正常启机的情况，空片无法升级。|速度慢，目前不够稳定，不推荐开发阶段使用。|hc15xx系列芯片不能烧录空片。|需要拆下flash后才能升级。|
+
+**目前使用usb烧录，使用HCprogrammer进行烧录**
