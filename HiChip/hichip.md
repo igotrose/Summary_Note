@@ -10,8 +10,34 @@ ubuntu18.04.06
         sudo cp /etc/apt/sources.list /etc/apt/sources.bak1
         sudo apt update
 3. 安装一系列工具
-        
-        sudo apt install *
+    - 基础开发工具
+      ```bash
+        sudo apt install git gcc make cmake automake ninja-build pkg-config tree rename
+      ```
+    - C/C++ 相关工具
+      ```bash
+        sudo apt install git gcc make cmake automake ninja-build pkg-config tree rename
+      ```
+    - Python 相关
+      ```bash
+      sudo apt install python3 python3-pip python3-dev python3-setuptools python3-wheel python3-venv
+      sudo apt install python3-pybind11 swig  
+      sudo pip3 install fdt  
+      ```
+
+    - 其他实用工具
+      ```bash
+      sudo apt install unzip rar dos2unix lzip lzma lzop texinfo re2c doxygen graphviz
+      ```
+    - 文件系统与工具
+      ```bash
+    sudo apt install mtools mtd-tools genromfs
+      ```
+
+    - 安全和压缩库
+        ```bash
+      sudo apt install libssl-dev libtool
+        ```
 4. 获取解压下载工具链和SDK放置自己的工作目录下
         
         tar -xvf Codescape.GNI.Tools.Packge*\
@@ -149,15 +175,15 @@ hcrtos sdk默认会尝试从 **http://hichip01/dl** 进行下载，该路径是�
 2. 配置文件命名规则
 
         hichip_hc16xx_db_d3100_v30_projector_cast_bl_defconfig  
-* hichip    ：芯片原厂
-* hc16xx    ：海奇一代芯片为hc15xx，二代芯片为hc16xx  
-* db        ：db表示demo board，cb表示custom board 
-* d3100     ：芯片型号
-* v30       ：表示硬件版本为V30
-* projector ：该项为app大功能配置。projector为投影仪方案，hcscreen为同屏器方案，hcdemo仅做参考app
-* cast      ：表示该配置带有无线同屏功能
-* bl        ：bl表示编译hcboot的配置，不带bl表示编译hcrtos sdk的配置，两个配置是配对的，缺一不可
-* defconfig ：Linux内核中默认的配置文件的后缀   
+    * hichip    ：芯片原厂
+    * hc16xx    ：海奇一代芯片为hc15xx，二代芯片为hc16xx  
+    * db        ：db表示demo board，cb表示custom board 
+    * d3100     ：芯片型号
+    * v30       ：表示硬件版本为V30
+    * projector ：该项为app大功能配置。projector为投影仪方案，hcscreen为同屏器方案，hcdemo仅做参考app
+    * cast      ：表示该配置带有无线同屏功能
+    * bl        ：bl表示编译hcboot的配置，不带bl表示编译hcrtos sdk的配置，两个配置是配对的，缺一不可
+    * defconfig ：Linux内核中默认的配置文件的后缀   
 
 ***开发者开发项目是，根据需求选择相近的配置进行编译。如原厂配置据不符合项目需求，则需要开发者自行根据项目需求配置deconfig***
 #### dts的选择
